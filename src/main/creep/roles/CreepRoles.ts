@@ -4,7 +4,6 @@ import { Globals } from "../../Globals";
 import { searchPath } from "game/path-finder";
 
 export function meleeAttacker(creep: Creep): void {
-  // Here is the alternative to the creep "memory" from Screeps World. All game objects are persistent. You can assign any property to it once, and it will be available during the entire match.
   if (!creep.initialPos) {
     creep.initialPos = { x: creep.x, y: creep.y };
   }
