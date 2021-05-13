@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Creep, OwnedStructure, Structure } from "game/prototypes";
 import { constants, pathFinder, prototypes, utils } from "game";
 import { getObjectsByPrototype, getTime } from "game/utils";

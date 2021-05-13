@@ -26,7 +26,15 @@ if (process.argv[3] === "--config-") {
 const getOptions = arena => {
   return {
     input: `${arena}/main.ts`,
-    external: ["game", "game/prototypes", "game/constants", "game/utils", "game/path-finder", "arena"], // <-- suppresses the warning
+    external: [
+      "game",
+      "game/prototypes",
+      "game/constants",
+      "game/utils",
+      "game/path-finder",
+      "arena",
+      "arena/prototypes"
+    ], // <-- suppresses the warning
     output: {
       dir: arena.replace("src/", "dist/"),
       format: "esm",
