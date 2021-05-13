@@ -33,7 +33,7 @@ screeps.json
 *.vi
 *~
 
-# Editor folders
+# Editor folders and files
 .cache
 .project
 .settings
@@ -43,6 +43,7 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .idea
+*.iml
 
 # =========================
 # Operating System Files

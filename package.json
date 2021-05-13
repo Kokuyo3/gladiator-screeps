@@ -1,8 +1,8 @@
 {
-  "name": "screeps-arena-typescript-starter",
-  "version": "3.0.0",
+  "name": "gladiator-screeps",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "//": "If you add or change the names of destinations in screeps.json, make sure you update these scripts to reflect the changes",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\"",
@@ -20,14 +20,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/screepers/screeps-typescript-starter.git"
+    "url": "git+https://github.com/Kokuyo3/gladiator-screeps.git"
   },
-  "author": "",
-  "license": "Unlicense",
+  "author": "Kokuyo3",
   "bugs": {
     "url": "https://github.com/screepers/screeps-typescript-starter/issues"
   },
-  "homepage": "https://github.com/screepers/screeps-typescript-starter#readme",
+  "homepage": "https://github.com/Kokuyo3/gladiator-screeps#readme",
   "engines": {
     "node": "10.x || 12.x"
   },
