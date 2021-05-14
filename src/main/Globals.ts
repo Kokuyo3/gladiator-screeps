@@ -7,13 +7,13 @@ export class Globals {
   public static enemyTower = getObjectsByPrototype(StructureTower).find(i => !i.my);
   public static myCreeps: Creep[];
   public static enemyCreeps: Creep[];
-  public static enemyFlag: Flag | undefined;
+  public static myFlag = getObjectsByPrototype(Flag).find(i => i.my);
+  public static enemyFlag = getObjectsByPrototype(Flag).find(i => !i.my);
   public static bodyParts: BodyPart[];
 
   public static update(): void {
     this.myCreeps = getObjectsByPrototype(Creep).filter(i => i.my);
     this.enemyCreeps = getObjectsByPrototype(Creep).filter(i => !i.my);
-    this.enemyFlag = getObjectsByPrototype(Flag).find(i => !i.my);
     this.bodyParts = getObjectsByPrototype(BodyPart);
   }
 }
