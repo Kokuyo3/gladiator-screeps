@@ -4,10 +4,6 @@ import { Globals } from "../../Globals";
 import { searchPath } from "game/path-finder";
 
 export function meleeAttacker(creep: Creep): void {
-  if (!creep.initialPos) {
-    creep.initialPos = { x: creep.x, y: creep.y };
-  }
-
   const targets = Globals.enemyCreeps
     .filter(i => getDistance(i, creep.initialPos) < 10)
     .sort((a, b) => getDistance(a, creep) - getDistance(b, creep));
@@ -70,6 +66,7 @@ export function healer(creep: Creep): void {
   }
 }
 
+// TODO: Create BaseCreepRole that will contain this common method
 function flee(creep: Creep, targets: RoomObject[], range: number) {
   const result = searchPath(
     creep,
