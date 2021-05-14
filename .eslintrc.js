@@ -27,7 +27,18 @@ module.exports = {
     "import/resolver": {
       typescript: {}
     },
-    "import/core-modules": ["game", "game/prototypes", "game/utils", "game/path-finder","game/constants", "arena", "arena/prototypes"] // https://github.com/benmosher/eslint-plugin-import/blob/v2.22.1/README.md#importcore-modules
+    "import/core-modules": [ // https://github.com/benmosher/eslint-plugin-import/blob/v2.22.1/README.md#importcore-modules
+      "game",
+      "game/prototypes",
+      "game/utils",
+      "game/path-finder",
+      "game/constants",
+      "game/constants/labels",
+      "game/constants/roles",
+      "game/constants/squads",
+      "arena",
+      "arena/prototypes"
+    ]
   },
   rules: {
     "@typescript-eslint/array-type": "error",
@@ -54,8 +65,18 @@ module.exports = {
     "eol-last": "off",
     eqeqeq: ["error", "smart"],
     "guard-for-in": "off",
-    "id-blacklist": ["error", "any", "Number", "number", "String", "string", "Boolean", "boolean", "Undefined"],
+    "id-blacklist": [
+      "error",
+      "any",
+      "Number",
+      "number",
+      "String",
+      "string",
+      "Boolean",
+      "boolean",
+      "Undefined"],
     "id-match": "error",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": "off",
     "max-classes-per-file": ["error", 1],
     "new-parens": "off",
@@ -84,6 +105,6 @@ module.exports = {
     "quote-props": "off",
     radix: "error",
     "sort-imports": "warn",
-    "spaced-comment": "error",
+    "spaced-comment": "error"
   }
 };
