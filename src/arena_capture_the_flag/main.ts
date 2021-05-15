@@ -9,6 +9,7 @@ export function loop(): void {
   Globals.update();
 
   if (getTime() === 1) {
+    Globals.updateStaticRoomObjects();
     CreepService.initCreeps();
   }
 

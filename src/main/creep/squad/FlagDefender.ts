@@ -30,7 +30,9 @@ function _flagGuardDefault(creep: Creep) {
   if (Globals.myFlag !== undefined) {
     const flagPos = { x: Globals.myFlag.x, y: Globals.myFlag.y };
 
-    creep.moveTo(flagPos);
+    console.log(`${creep.label} moving to my Flag at ${JSON.stringify(flagPos)}`);
+
+    creep.moveTo(Globals.myFlag);
 
     const targets = Globals.enemyCreeps
       .filter(i => getDistance(i, flagPos) <= 1)
