@@ -33,9 +33,6 @@ module.exports = {
       "game/utils",
       "game/path-finder",
       "game/constants",
-      "game/constants/labels",
-      "game/constants/roles",
-      "game/constants/squads",
       "arena",
       "arena/prototypes"
     ]

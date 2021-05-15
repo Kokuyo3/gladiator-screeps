@@ -1,23 +1,23 @@
-import { FLAG_GUARD, HEALER, MDPS, RDPS } from "game/constants/roles";
 import { healer, meleeAttacker, rangedAttacker } from "../role/CreepRoles";
 import { Creep } from "game/prototypes";
+import { Role } from "../enums/Role";
 
 export class FlagAttacker {
   public static default(creep: Creep): void {
     switch (creep.role) {
-      case FLAG_GUARD: {
+      case Role.FLAG_GUARD: {
         _flagGuardDefault(creep);
         break;
       }
-      case MDPS: {
+      case Role.MDPS: {
         _mdpsDefault(creep);
         break;
       }
-      case RDPS: {
+      case Role.RDPS: {
         _rdpsDefault(creep);
         break;
       }
-      case HEALER: {
+      case Role.HEALER: {
         _healerDefault(creep);
       }
     }

@@ -1,25 +1,25 @@
-import { FLAG_GUARD, HEALER, MDPS, RDPS } from "game/constants/roles";
 import { meleeAttacker, rangedAttacker } from "../role/CreepRoles";
 import { Creep } from "game/prototypes";
 import { Globals } from "../../Globals";
+import { Role } from "../enums/Role";
 import { getDistance } from "game/utils";
 
 export class FlagDefender {
   public static default(creep: Creep): void {
     switch (creep.role) {
-      case FLAG_GUARD: {
+      case Role.FLAG_GUARD: {
         _flagGuardDefault(creep);
         break;
       }
-      case MDPS: {
+      case Role.MDPS: {
         _mdpsDefault(creep);
         break;
       }
-      case RDPS: {
+      case Role.RDPS: {
         _rdpsDefault(creep);
         break;
       }
-      case HEALER: {
+      case Role.HEALER: {
         _healerDefault(creep);
       }
     }
@@ -62,7 +62,7 @@ function _rdpsDefault(creep: Creep) {
 }
 
 function _healerDefault(creep: Creep) {
-  const healTargets = Globals.myCreeps.filter(i => i.role === FLAG_GUARD).sort((a, b) => a.hits - b.hits);
+  const healTargets = Globals.myCreeps.filter(i => i.role === Role.FLAG_GUARD).sort((a, b) => a.hits - b.hits);
 
   if (healTargets.length > 0) {
     const targetDistance = getDistance(healTargets[0], creep);

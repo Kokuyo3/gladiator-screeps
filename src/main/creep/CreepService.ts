@@ -1,9 +1,9 @@
 import { Creep } from "game/prototypes";
 import { Globals } from "../Globals";
-import LabelConstants from "game/constants/labels";
-import LabelMap from "./label/LabelMap";
-import RoleConstants from "game/constants/roles";
-import SquadConstants from "game/constants/squads";
+import { Label } from "./enums/Label";
+import { LabelMap } from "./label/LabelMap";
+import { Role } from "./enums/Role";
+import { Squad } from "./enums/Squad";
 
 export class CreepService {
   /**
@@ -15,6 +15,10 @@ export class CreepService {
       _setInitialPos(creep);
       _setLabel(creep);
       _setRoleAndSquad(creep);
+
+      console.log(
+        `Initialized Creep at (${creep.initialPos.x}, ${creep.initialPos.y}) as ${creep.label} with Squad: ${creep.squad} and Role: ${creep.role}`
+      );
     });
   }
 }
@@ -38,7 +42,7 @@ function _setInitialPos(creep: Creep) {
  * @param creep The Creep that will have its label set
  */
 function _setLabel(creep: Creep) {
-  const label = LabelMap.get(creep.initialPos);
+  const label = LabelMap.get(JSON.stringify(creep.initialPos));
 
   if (label !== undefined) {
     creep.label = label;
@@ -55,74 +59,74 @@ function _setLabel(creep: Creep) {
  */
 function _setRoleAndSquad(creep: Creep) {
   switch (creep.label) {
-    case LabelConstants.MDPS_1: {
-      creep.role = RoleConstants.FLAG_GUARD;
-      creep.squad = SquadConstants.FLAG_DEFENDERS;
+    case Label.MDPS_1: {
+      creep.role = Role.FLAG_GUARD;
+      creep.squad = Squad.FLAG_DEFENDERS;
       break;
     }
-    case LabelConstants.MDPS_2: {
-      creep.role = RoleConstants.MDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.MDPS_2: {
+      creep.role = Role.MDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_1: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_1: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_2: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_2: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_3: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_3: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_4: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_4: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_5: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_5: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.RDPS_6: {
-      creep.role = RoleConstants.RDPS;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.RDPS_6: {
+      creep.role = Role.RDPS;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.HEALER_1: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_DEFENDERS;
+    case Label.HEALER_1: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_DEFENDERS;
       break;
     }
-    case LabelConstants.HEALER_2: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.HEALER_2: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.HEALER_3: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.HEALER_3: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.HEALER_4: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.HEALER_4: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.HEALER_5: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.HEALER_5: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
-    case LabelConstants.HEALER_6: {
-      creep.role = RoleConstants.HEALER;
-      creep.squad = SquadConstants.FLAG_ATTACKERS;
+    case Label.HEALER_6: {
+      creep.role = Role.HEALER;
+      creep.squad = Squad.FLAG_ATTACKERS;
       break;
     }
   }
