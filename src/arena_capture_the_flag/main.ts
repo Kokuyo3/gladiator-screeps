@@ -19,6 +19,10 @@ export function loop(): void {
     CreepService.initCreeps();
   }
 
+  if (getTime() % 2 !== 0) {
+    CreepService.updatePreviousTickHits();
+  }
+
   if (getTime() % 10 === 0) {
     log.info(`My Creeps: ${Globals.myCreeps.length} vs Enemy Creeps: ${Globals.enemyCreeps.length}`);
   }

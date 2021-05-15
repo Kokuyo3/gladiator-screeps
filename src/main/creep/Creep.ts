@@ -4,5 +4,6 @@ declare module "game/prototypes" {
     label: import("./enums/Label").Label;
     role: import("./enums/Role").Role;
     squad: import("./enums/Squad").Squad;
+    previousTickHits: number;
   }
 }

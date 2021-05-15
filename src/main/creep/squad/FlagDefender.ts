@@ -1,5 +1,6 @@
 import { meleeAttacker, rangedAttacker } from "../role/CreepRoles";
 import { Creep } from "game/prototypes";
+import { CreepService } from "../CreepService";
 import { Globals } from "../../Globals";
 import { Log } from "../../utils/log/Log";
 import { Role } from "../enums/Role";
@@ -40,10 +41,10 @@ function _flagGuardDefault(creep: Creep) {
       .sort((a, b) => getDistance(a, creep) - getDistance(b, creep));
 
     if (targets.length > 0) {
-      creep.attack(targets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.attack, targets[0]);
     }
   } else {
-    console.warn(`My flag is undefined. Flag Guard ${creep.label} defaulting to MDPS behavior`);
+    log.warn(`My flag is undefined. Flag Guard ${creep.label} defaulting to MDPS behavior`);
 
     const targets = Globals.enemyCreeps
       .filter(i => getDistance(i, creep.initialPos) <= 10)
@@ -51,7 +52,7 @@ function _flagGuardDefault(creep: Creep) {
 
     if (targets.length > 0) {
       creep.moveTo(targets[0]);
-      creep.attack(targets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.attack, targets[0]);
     }
   }
 }
@@ -73,9 +74,9 @@ function _healerDefault(creep: Creep) {
     const targetDistance = getDistance(healTargets[0], creep);
 
     if (targetDistance === 1) {
-      creep.heal(healTargets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.heal, healTargets[0]);
     } else if (targetDistance <= 3) {
-      creep.rangedHeal(healTargets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.rangedHeal, healTargets[0]);
       creep.moveTo(healTargets[0]);
     } else {
       creep.moveTo(healTargets[0]);

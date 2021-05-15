@@ -31,6 +31,37 @@ export class CreepService {
       _setLabel(creep);
     });
   }
+
+  /**
+   * Takes a supplied Creep and uses it to call a combat method from {@link Creep} on a supplied target Creep, then
+   * logs the action and its results if the resulting hpDiff of the target Creep is greater than 0. Returns the
+   * difference in the target Creep's HP as a result of the supplied method.
+   * TODO: Figure out how to differentation damage done by source. Method currently returns the total difference
+   * between the previous and current tick, which could have come from multiple sources.
+   *
+   * @param thisCreep the Creep to perform the action
+   * @param method the combat method from {@link Creep} that {@param thisCreep} will perform on {@param targetCreep}
+   * @param targetCreep the Creep that will be a target of {@param method}
+   */
+  public static callCreepCombatMethod(thisCreep: Creep, method: (creep: Creep) => void, targetCreep: Creep): number {
+    const preHP = targetCreep.previousTickHits;
+
+    method.call(thisCreep, targetCreep);
+
+    const postHP = targetCreep.hits;
+
+    const hpDiff = Math.abs(postHP - preHP);
+
+    if (hpDiff > 0) {
+      log.info(`${thisCreep.label}.${method.name} => ${targetCreep.label} for ${hpDiff}`);
+    }
+
+    return hpDiff;
+  }
+
+  public static updatePreviousTickHits(): void {
+    Globals.allCreeps.forEach(creep => (creep.previousTickHits = creep.hits));
+  }
 }
 
 /**

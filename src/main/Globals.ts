@@ -8,6 +8,7 @@ export class Globals {
 
   public static myTower: StructureTower | undefined;
   public static enemyTower: StructureTower | undefined;
+  public static allCreeps: Creep[];
   public static myCreeps: Creep[];
   public static enemyCreeps: Creep[];
   public static myFlag: Flag | undefined;
@@ -15,6 +16,7 @@ export class Globals {
   public static bodyParts: BodyPart[];
 
   public static update(): void {
+    this.allCreeps = getObjectsByPrototype(Creep);
     this.myCreeps = getObjectsByPrototype(Creep).filter(i => i.my);
     this.enemyCreeps = getObjectsByPrototype(Creep).filter(i => !i.my);
     this.bodyParts = getObjectsByPrototype(BodyPart);

@@ -1,5 +1,6 @@
 import { Creep, RoomObject } from "game/prototypes";
 import { getDirection, getDistance } from "game/utils";
+import { CreepService } from "../CreepService";
 import { Globals } from "../../Globals";
 import { searchPath } from "game/path-finder";
 
@@ -10,7 +11,7 @@ export function meleeAttacker(creep: Creep): void {
 
   if (targets.length > 0) {
     creep.moveTo(targets[0]);
-    creep.attack(targets[0]);
+    CreepService.callCreepCombatMethod(creep, Creep.prototype.attack, targets[0]);
   } else {
     creep.moveTo(creep.initialPos);
   }
@@ -20,7 +21,7 @@ export function rangedAttacker(creep: Creep): void {
   const targets = Globals.enemyCreeps.filter(() => true).sort((a, b) => getDistance(a, creep) - getDistance(b, creep));
 
   if (targets.length > 0) {
-    creep.rangedAttack(targets[0]);
+    CreepService.callCreepCombatMethod(creep, Creep.prototype.rangedAttack, targets[0]);
   }
 
   if (Globals.enemyFlag) {
@@ -49,9 +50,9 @@ export function healer(creep: Creep): void {
 
   if (healTargets.length > 0) {
     if (getDistance(healTargets[0], creep) === 1) {
-      creep.heal(healTargets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.heal, healTargets[0]);
     } else {
-      creep.rangedHeal(healTargets[0]);
+      CreepService.callCreepCombatMethod(creep, Creep.prototype.rangedHeal, healTargets[0]);
     }
   }
 
