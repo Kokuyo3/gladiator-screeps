@@ -2,9 +2,15 @@ import { CreepService } from "../main/creep/CreepService";
 import { FlagAttacker } from "../main/creep/squad/FlagAttacker";
 import { FlagDefender } from "../main/creep/squad/FlagDefender";
 import { Globals } from "../main/Globals";
+import { Log } from "../main/utils/log/Log";
 import { Squad } from "../main/creep/enums/Squad";
 import { getTime } from "game/utils";
 
+const log = new Log("main");
+
+/**
+ * Main method that gets executed each tick. Logging level can be set in {@link Globals}.
+ */
 export function loop(): void {
   Globals.update();
 
@@ -14,7 +20,7 @@ export function loop(): void {
   }
 
   if (getTime() % 10 === 0) {
-    console.log(`I have ${Globals.myCreeps.length} Creeps vs ${Globals.enemyCreeps.length} enemy Creeps`);
+    log.info(`My Creeps: ${Globals.myCreeps.length} vs Enemy Creeps: ${Globals.enemyCreeps.length}`);
   }
 
   Globals.myCreeps.forEach(creep => {

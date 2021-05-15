@@ -1,8 +1,11 @@
 import { meleeAttacker, rangedAttacker } from "../role/CreepRoles";
 import { Creep } from "game/prototypes";
 import { Globals } from "../../Globals";
+import { Log } from "../../utils/log/Log";
 import { Role } from "../enums/Role";
 import { getDistance } from "game/utils";
+
+const log = new Log("FlagDefender");
 
 export class FlagDefender {
   public static default(creep: Creep): void {
@@ -30,8 +33,6 @@ function _flagGuardDefault(creep: Creep) {
   if (Globals.myFlag !== undefined) {
     const flagPos = { x: Globals.myFlag.x, y: Globals.myFlag.y };
 
-    console.log(`${creep.label} moving to my Flag at ${JSON.stringify(flagPos)}`);
-
     creep.moveTo(Globals.myFlag);
 
     const targets = Globals.enemyCreeps
@@ -42,6 +43,8 @@ function _flagGuardDefault(creep: Creep) {
       creep.attack(targets[0]);
     }
   } else {
+    console.warn(`My flag is undefined. Flag Guard ${creep.label} defaulting to MDPS behavior`);
+
     const targets = Globals.enemyCreeps
       .filter(i => getDistance(i, creep.initialPos) <= 10)
       .sort((a, b) => getDistance(a, creep) - getDistance(b, creep));

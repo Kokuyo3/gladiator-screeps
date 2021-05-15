@@ -2,8 +2,11 @@ import { Creep } from "game/prototypes";
 import { Globals } from "../Globals";
 import { Label } from "./enums/Label";
 import { LabelMap } from "./label/LabelMap";
+import { Log } from "../utils/log/Log";
 import { Role } from "./enums/Role";
 import { Squad } from "./enums/Squad";
+
+const log = new Log("CreepService");
 
 export class CreepService {
   /**
@@ -16,8 +19,10 @@ export class CreepService {
       _setLabel(creep);
       _setRoleAndSquad(creep);
 
-      console.log(
-        `Initialized Creep at (${creep.initialPos.x}, ${creep.initialPos.y}) as ${creep.label} with Squad: ${creep.squad} and Role: ${creep.role}`
+      log.info(
+        `Initialized Creep at ${JSON.stringify(creep.initialPos)} as ${creep.label} with Squad: ${
+          creep.squad
+        } and Role: ${creep.role}`
       );
     });
   }

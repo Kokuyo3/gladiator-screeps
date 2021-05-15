@@ -1,8 +1,11 @@
 import { BodyPart, Flag } from "arena/prototypes";
 import { Creep, StructureTower } from "game/prototypes";
+import { LogLevel } from "./utils/log/LogLevel";
 import { getObjectsByPrototype } from "game/utils";
 
 export class Globals {
+  public static logLevel: LogLevel = LogLevel.INFO;
+
   public static myTower: StructureTower | undefined;
   public static enemyTower: StructureTower | undefined;
   public static myCreeps: Creep[];
