@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/restrict-plus-operands,@typescript-eslint/no-unused-vars,import/no-named-as-default-member */
+// noinspection JSUnusedGlobalSymbols
+
 "use strict";
 
 import clear from "rollup-plugin-clear";
-import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from "rollup-plugin-typescript2";
 import fg from "fast-glob";
+import resolve from "@rollup/plugin-node-resolve";
+import typescript from "rollup-plugin-typescript2";
 
 const scriptLimit = 10000000; // 10mb
-let cfg;
+// let cfg;
 let targetArena = "";
 if (process.argv[3] === "--config-") {
   // we running dynamic mode
@@ -78,7 +81,7 @@ if (arenas.length === 0) {
   if (targetArena === "") {
     console.log(`No arena targeted. Building all ${arenas.length} arenas.`);
   } else {
-    console.log(`Buidling ${arenas.length} arena(s) for target "${targetArena}"`);
+    console.log(`Building ${arenas.length} arena(s) for target "${targetArena}"`);
   }
 }
 
