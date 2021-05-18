@@ -1,6 +1,7 @@
 import { CreepService } from "../main/creep/CreepService";
 import { FlagAttacker } from "../main/creep/squad/FlagAttacker";
 import { FlagDefender } from "../main/creep/squad/FlagDefender";
+import { FlagDefenseTower } from "../main/tower/FlagDefenseTower";
 import { Globals } from "../main/Globals";
 import { Log } from "../main/utils/log/Log";
 import { Squad } from "../main/creep/enums/Squad";
@@ -27,6 +28,12 @@ export function loop(): void {
     log.info(`My Creeps: ${Globals.myCreeps.length} vs Enemy Creeps: ${Globals.enemyCreeps.length}`);
   }
 
+  // Set Tower Behavior Mode
+  if (Globals.myTower) {
+    FlagDefenseTower.prioritizeAttackEnemyCreeps(Globals.myTower);
+  }
+
+  // Set Creep Behavior based on assigned Squad
   Globals.myCreeps.forEach(creep => {
     if (creep.squad === Squad.FLAG_DEFENDERS) {
       FlagDefender.default(creep);
