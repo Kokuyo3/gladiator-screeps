@@ -1,4 +1,5 @@
 import { Creep } from "game/prototypes";
+import { EnemyLabelMap } from "./label/EnemyLabelMap";
 import { Globals } from "../Globals";
 import { Label } from "./enums/Label";
 import { LabelMap } from "./label/LabelMap";
@@ -78,12 +79,18 @@ function _setInitialPos(creep: Creep) {
 /**
  * Sets the uniquely identifying label for a Creep by using its initial position
  * to determine which creep it is. Mapping between RoomPosition and Label is
- * defined in {@link LabelMap}
+ * defined in {@link LabelMap} and {@link EnemyLabelMap}
  *
  * @param creep The Creep that will have its label set
  */
 function _setLabel(creep: Creep) {
-  const label = LabelMap.get(JSON.stringify(creep.initialPos));
+  let label;
+
+  if (creep.my) {
+    label = LabelMap.get(JSON.stringify(creep.initialPos));
+  } else {
+    label = EnemyLabelMap.get(JSON.stringify(creep.initialPos));
+  }
 
   if (label !== undefined) {
     creep.label = label;
@@ -99,72 +106,72 @@ function _setLabel(creep: Creep) {
  * @param creep The Creep that will have its Role and Squad set
  */
 function _setRoleAndSquad(creep: Creep) {
-  if (creep.label === Label.MDPS_1_BLUE || creep.label === Label.MDPS_1_RED) {
+  if (creep.label === Label.MDPS_1) {
     {
       creep.role = Role.FLAG_GUARD;
       creep.squad = Squad.FLAG_DEFENDERS;
     }
-  } else if (creep.label === Label.MDPS_2_BLUE || creep.label === Label.MDPS_2_RED) {
+  } else if (creep.label === Label.MDPS_2) {
     {
       creep.role = Role.MDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_1_BLUE || creep.label === Label.RDPS_1_RED) {
+  } else if (creep.label === Label.RDPS_1) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_2_BLUE || creep.label === Label.RDPS_2_RED) {
+  } else if (creep.label === Label.RDPS_2) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_3_BLUE || creep.label === Label.RDPS_3_RED) {
+  } else if (creep.label === Label.RDPS_3) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_4_BLUE || creep.label === Label.RDPS_4_RED) {
+  } else if (creep.label === Label.RDPS_4) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_5_BLUE || creep.label === Label.RDPS_5_RED) {
+  } else if (creep.label === Label.RDPS_5) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.RDPS_6_BLUE || creep.label === Label.RDPS_6_RED) {
+  } else if (creep.label === Label.RDPS_6) {
     {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.HEALER_1_BLUE || creep.label === Label.HEALER_1_RED) {
+  } else if (creep.label === Label.HEALER_1) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_DEFENDERS;
     }
-  } else if (creep.label === Label.HEALER_2_BLUE || creep.label === Label.HEALER_2_RED) {
+  } else if (creep.label === Label.HEALER_2) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.HEALER_3_BLUE || creep.label === Label.HEALER_3_RED) {
+  } else if (creep.label === Label.HEALER_3) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.HEALER_4_BLUE || creep.label === Label.HEALER_4_RED) {
+  } else if (creep.label === Label.HEALER_4) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.HEALER_5_BLUE || creep.label === Label.HEALER_5_RED) {
+  } else if (creep.label === Label.HEALER_5) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
     }
-  } else if (creep.label === Label.HEALER_6_BLUE || creep.label === Label.HEALER_6_RED) {
+  } else if (creep.label === Label.HEALER_6) {
     {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
