@@ -99,76 +99,75 @@ function _setLabel(creep: Creep) {
  * @param creep The Creep that will have its Role and Squad set
  */
 function _setRoleAndSquad(creep: Creep) {
-  switch (creep.label) {
-    case Label.MDPS_1_BLUE || Label.MDPS_1_RED: {
+  if (creep.label === Label.MDPS_1_BLUE || creep.label === Label.MDPS_1_RED) {
+    {
       creep.role = Role.FLAG_GUARD;
       creep.squad = Squad.FLAG_DEFENDERS;
-      break;
     }
-    case Label.MDPS_2_BLUE || Label.MDPS_2_RED: {
+  } else if (creep.label === Label.MDPS_2_BLUE || creep.label === Label.MDPS_2_RED) {
+    {
       creep.role = Role.MDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_1_BLUE || Label.RDPS_1_RED: {
+  } else if (creep.label === Label.RDPS_1_BLUE || creep.label === Label.RDPS_1_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_2_BLUE || Label.RDPS_2_RED: {
+  } else if (creep.label === Label.RDPS_2_BLUE || creep.label === Label.RDPS_2_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_3_BLUE || Label.RDPS_3_RED: {
+  } else if (creep.label === Label.RDPS_3_BLUE || creep.label === Label.RDPS_3_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_4_BLUE || Label.RDPS_4_RED: {
+  } else if (creep.label === Label.RDPS_4_BLUE || creep.label === Label.RDPS_4_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_5_BLUE || Label.RDPS_5_RED: {
+  } else if (creep.label === Label.RDPS_5_BLUE || creep.label === Label.RDPS_5_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.RDPS_6_BLUE || Label.RDPS_6_RED: {
+  } else if (creep.label === Label.RDPS_6_BLUE || creep.label === Label.RDPS_6_RED) {
+    {
       creep.role = Role.RDPS;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.HEALER_1_BLUE || Label.HEALER_1_RED: {
+  } else if (creep.label === Label.HEALER_1_BLUE || creep.label === Label.HEALER_1_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_DEFENDERS;
-      break;
     }
-    case Label.HEALER_2_BLUE || Label.HEALER_2_RED: {
+  } else if (creep.label === Label.HEALER_2_BLUE || creep.label === Label.HEALER_2_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.HEALER_3_BLUE || Label.HEALER_3_RED: {
+  } else if (creep.label === Label.HEALER_3_BLUE || creep.label === Label.HEALER_3_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.HEALER_4_BLUE || Label.HEALER_4_RED: {
+  } else if (creep.label === Label.HEALER_4_BLUE || creep.label === Label.HEALER_4_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.HEALER_5_BLUE || Label.HEALER_5_RED: {
+  } else if (creep.label === Label.HEALER_5_BLUE || creep.label === Label.HEALER_5_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
-    case Label.HEALER_6_BLUE || Label.HEALER_6_RED: {
+  } else if (creep.label === Label.HEALER_6_BLUE || creep.label === Label.HEALER_6_RED) {
+    {
       creep.role = Role.HEALER;
       creep.squad = Squad.FLAG_ATTACKERS;
-      break;
     }
   }
 }
