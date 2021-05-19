@@ -13,7 +13,9 @@ export function meleeAttacker(creep: Creep): void {
     creep.moveTo(targets[0]);
     CreepService.callCreepCombatMethod(creep, Creep.prototype.attack, targets[0]);
   } else {
-    creep.moveTo(creep.initialPos);
+    if (Globals.enemyFlag) {
+      creep.moveTo(Globals.enemyFlag);
+    }
   }
 }
 
